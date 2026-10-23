@@ -70,7 +70,8 @@ Hasil yang diharapkan untuk pemeriksaan status hidup Aurora adalah:
 
 ## Bukti Output Program
 
-Screenshot terminal yang menampilkan hasil program, proses level up, nilai mana Aurora, dan hasil `isAlive()` disiapkan sebagai bukti pengerjaan tugas dan akan dikumpulkan secara terpisah.
+Berikut adalah bukti bahwa program Character Manager berhasil dijalankan.
+![Output Character Manager](screenshots/Screenshot%202026-10-23%20221944.png)
 
 ## Identitas Mahasiswa
 
