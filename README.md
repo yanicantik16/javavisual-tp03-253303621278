@@ -84,3 +84,54 @@ Berikut adalah bukti bahwa program Character Manager berhasil dijalankan.
 Dokumen teori Java Visual TP3:
 
 [https://docs.google.com/document/d/1dAGIkz2O9_-CEyK_-ONV9UVBErFjpvyR_64NC5E5m6I/edit?usp=sharing]
+
+---
+
+# TP5 — Character Manager Sprint #2
+
+## Fitur TP5
+
+- `Character.equals()` membandingkan nama karakter secara case-sensitive; `hashCode()` juga mengikuti nama.
+- `CharacterManager.addCharacter()` menolak nama duplikat.
+- `findByName()`, `removeCharacter()`, `getTotalCharacters()`, dan `getAllCharacters()` mengelola koleksi karakter.
+- `getAllCharacters()` mengembalikan defensive copy (`new ArrayList<>(characterList)`), bukan daftar internal.
+- `getAverageLevel()` mengembalikan `0.0` jika daftar kosong.
+- `findByType(CharacterType type)` mengembalikan daftar baru karakter sesuai tipe.
+- Fitur analitik mandiri `countByType(CharacterType type)` menghitung jumlah karakter berdasarkan tipe tanpa membuka daftar internal.
+- `Character.totalCharacterCreated` adalah counter `static` yang dibagikan seluruh object Character.
+
+## Rasional Fitur Mandiri: `countByType()`
+
+Fitur `countByType()` membantu pengguna memperoleh ringkasan jumlah karakter untuk satu tipe, misalnya berapa karakter `WARRIOR` yang terdaftar. Method ini melakukan iterasi pada daftar internal dan hanya mengembalikan angka. Dengan demikian, pemanggil tidak memperoleh akses untuk mengubah `characterList`, sehingga Encapsulation tetap terjaga. Method ini dilengkapi Javadoc di `CharacterManager.java`.
+
+## Cara Menjalankan TP5 (PowerShell)
+
+Jalankan perintah berikut dari folder utama `CharacterManager`:
+
+```powershell
+javac -d out src\com\unpri\charactermanager\model\CharacterType.java src\com\unpri\charactermanager\model\Character.java src\com\unpri\charactermanager\model\CharacterManager.java src\Main.java
+java -cp out Main
+```
+
+## Checklist Bukti Screenshot TP5
+
+Screenshot 1 - Bukti Program TP5:
+
+![Bukti Program TP5](screenshots/Screenshot%202026-10-24%20021648.png)
+
+Screenshot 2 - Bukti Pengujian TP5:
+
+![Bukti Pengujian TP5](screenshots/Screenshot%202026-10-24%20021730.png)
+
+
+1. Nama duplikat `Arjuna` ditolak dan total karakter tetap 3.
+2. Hasil rata-rata level dan pencarian berdasarkan tipe.
+3. Eksperimen reference: level berubah menjadi 99 dan `asli == alias` bernilai `true`.
+4. Defensive copy: total manager asli tetap 2, sedangkan ukuran salinan menjadi 3.
+5. Uji daftar kosong yang menghasilkan rata-rata `0.0`.
+
+Simpan screenshot di folder `screenshots/`, lalu ganti daftar ini dengan gambar yang benar-benar kamu ambil setelah menjalankan program di komputermu.
+
+## Google Docs TP5
+
+[Dokumen Analisis TP5](https://docs.google.com/document/d/1FD08w44BXL_JIl6FOT5UnjX6Tw4e-4wPLTNIua4mxMQ/edit?usp=sharing)

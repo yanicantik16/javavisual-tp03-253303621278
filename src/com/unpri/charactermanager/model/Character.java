@@ -1,11 +1,10 @@
-
 package com.unpri.charactermanager.model;
 
-/**
- * Merepresentasikan satu karakter dalam aplikasi Character Manager.
- * Semua atribut dibuat private untuk menerapkan Encapsulation.
- */
+import java.util.Objects;
+
+/** Merepresentasikan satu karakter dalam aplikasi Character Manager. */
 public class Character {
+    private static int totalCharacterCreated = 0;
 
     private int id;
     private String name;
@@ -15,12 +14,12 @@ public class Character {
     private int attackPower;
     private int mana;
 
-    // Constructor pertama: membuat karakter baru.
+    /** Membuat karakter baru dan memberikan ID otomatis. */
     public Character(String name, CharacterType type, int level) {
-        if (level < 1) {
-            throw new IllegalArgumentException("Level minimal adalah 1");
-        }
-
+        validateName(name);
+        if (type == null) throw new IllegalArgumentException("Tipe karakter tidak boleh null");
+        if (level < 1) throw new IllegalArgumentException("Level minimal adalah 1");
+        this.id = ++totalCharacterCreated;
         this.name = name;
         this.type = type;
         this.level = level;
@@ -29,9 +28,12 @@ public class Character {
         this.mana = 0;
     }
 
-    // Constructor kedua: membuat karakter dengan data lengkap.
+    /** Membuat karakter dari data lengkap yang sudah tersedia. */
     public Character(int id, String name, CharacterType type,
                      int level, int hitPoints, int attackPower) {
+        validateName(name);
+        if (type == null) throw new IllegalArgumentException("Tipe karakter tidak boleh null");
+        if (level < 1) throw new IllegalArgumentException("Level minimal adalah 1");
         this.id = id;
         this.name = name;
         this.type = type;
@@ -39,79 +41,59 @@ public class Character {
         this.hitPoints = hitPoints;
         this.attackPower = attackPower;
         this.mana = 0;
+        totalCharacterCreated++;
     }
 
-    private int calculateBaseHP() {
-        return 100 + (level * 10);
+    private static void validateName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nama karakter tidak boleh kosong");
+        }
     }
 
-    private int calculateBaseAttack() {
-        return 10 + (level * 5);
-    }
+    private int calculateBaseHP() { return 100 + (level * 10); }
+    private int calculateBaseAttack() { return 10 + (level * 5); }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public CharacterType getType() {
-        return type;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public int getHitPoints() {
-        return hitPoints;
-    }
-
-    public int getAttackPower() {
-        return attackPower;
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    public static int getTotalCharacterCreated() { return totalCharacterCreated; }
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public CharacterType getType() { return type; }
+    public int getLevel() { return level; }
+    public int getHitPoints() { return hitPoints; }
+    public int getAttackPower() { return attackPower; }
+    public int getMana() { return mana; }
+    public void setId(int id) { this.id = id; }
 
     public void setLevel(int level) {
-        if (level < 1) {
-            throw new IllegalArgumentException("Level minimal adalah 1");
-        }
-
+        if (level < 1) throw new IllegalArgumentException("Level minimal adalah 1");
         this.level = level;
         this.hitPoints = calculateBaseHP();
         this.attackPower = calculateBaseAttack();
     }
 
     public void setMana(int mana) {
-        if (mana < 0) {
-            throw new IllegalArgumentException("Mana tidak boleh negatif");
-        }
-
+        if (mana < 0) throw new IllegalArgumentException("Mana tidak boleh negatif");
         this.mana = mana;
     }
 
-    public boolean isAlive() {
-        return hitPoints > 0;
+    public boolean isAlive() { return hitPoints > 0; }
+
+    /** Dua karakter dianggap sama jika namanya sama persis (case-sensitive). */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Character)) return false;
+        Character other = (Character) obj;
+        return name.equals(other.name);
     }
 
     @Override
+    public int hashCode() { return Objects.hash(name); }
+
+    @Override
     public String toString() {
-        return "Character{id=" + id
-                + ", name='" + name + '\''
-                + ", type=" + type
-                + ", level=" + level
-                + ", hp=" + hitPoints
-                + ", atk=" + attackPower
-                + ", mana=" + mana
-                + '}';
+        return "Character{id=" + id + ", name='" + name + '\''
+                + ", type=" + type + ", level=" + level
+                + ", hp=" + hitPoints + ", atk=" + attackPower
+                + ", mana=" + mana + '}';
     }
 }
