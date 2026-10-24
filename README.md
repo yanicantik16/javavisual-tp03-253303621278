@@ -38,25 +38,23 @@ Aplikasi Character Manager memiliki fitur:
 
 ## 4. Struktur Project
 
-```text
-CharacterManager/
-├── src/
-│   ├── Main.java
-│   └── com/
-│       └── unpri/
-│           └── charactermanager/
-│               ├── model/
-│               │   ├── Character.java
-│               │   ├── CharacterManager.java
-│               │   └── CharacterType.java
-│               └── view/
-│                   └── MainWindow.java
-├── out/
-├── screenshots/
-│   ├── tp8-tampilan-aplikasi.png
-│   └── tp8-kode-terminal.png
-└── README.md
-```
+    CharacterManager/
+    ├── src/
+    │   ├── Main.java
+    │   └── com/
+    │       └── unpri/
+    │           └── charactermanager/
+    │               ├── model/
+    │               │   ├── Character.java
+    │               │   ├── CharacterManager.java
+    │               │   └── CharacterType.java
+    │               └── view/
+    │                   └── MainWindow.java
+    ├── out/
+    ├── screenshots/
+    │   ├── Screenshot 2026-10-24 070759.png
+    │   └── Screenshot 2026-10-24 070905.png
+    └── README.md
 
 ## 5. Teknologi yang Digunakan
 
@@ -90,15 +88,13 @@ Buka terminal pada folder utama project CharacterManager.
 
 ### Kompilasi Program
 
-```powershell
-javac -d out src\com\unpri\charactermanager\model\CharacterType.java src\com\unpri\charactermanager\model\Character.java src\com\unpri\charactermanager\model\CharacterManager.java src\com\unpri\charactermanager\view\MainWindow.java src\Main.java
-```
+Jalankan perintah berikut di PowerShell:
+
+    javac -d out src\com\unpri\charactermanager\model\CharacterType.java src\com\unpri\charactermanager\model\Character.java src\com\unpri\charactermanager\model\CharacterManager.java src\com\unpri\charactermanager\view\MainWindow.java src\Main.java
 
 ### Menjalankan Program
 
-```powershell
-java -cp out Main
-```
+    java -cp out Main
 
 Setelah program dijalankan, jendela Character Manager akan menampilkan lima karakter beserta informasi dan statistiknya.
 
