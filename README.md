@@ -106,13 +106,13 @@ Berikut merupakan dokumentasi hasil implementasi Character Manager TP8.
 
 Screenshot berikut menunjukkan aplikasi Character Manager yang berhasil dijalankan menggunakan Java Swing.
 
-![Tampilan Aplikasi Character Manager TP8](screenshots/Screenshot%202026-10-24%20070759.png)
+![Tampilan Aplikasi Character Manager TP8](<screenshots/Screenshot 2026-10-24 070759.png>)
 
 ### 8.2 Screenshot Kode dan Terminal VS Code
 
 Screenshot berikut menunjukkan implementasi kode Java di Visual Studio Code serta hasil eksekusi program melalui terminal.
 
-![Kode dan Terminal Character Manager TP8](screenshots/Screenshot%202026-10-24%20070905.png)
+![Kode dan Terminal Character Manager TP8](<screenshots/Screenshot 2026-10-24 070905.png>)
 
 ## 9. Analisis Implementasi
 
